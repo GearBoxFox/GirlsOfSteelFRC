@@ -284,6 +284,7 @@ public class RobotContainer {
         m_operatorController.b().whileTrue(m_ledManagerSubsystem.commandCubeGamePieceSignal());
         m_operatorController.a().whileTrue(m_claw.createTeleopMoveClawIntakeInCommand(m_operatorController));
         m_operatorController.x().whileTrue(m_claw.createMoveClawIntakeOutCommand());
+        //Hold down buttons on pad
         m_operatorController.povUp().whileTrue(CombinedCommandsUtil.armToHpPickup(m_armPivot, m_armExtend));
         m_operatorController.povDown().whileTrue(CombinedCommandsUtil.goToGroundPickup(m_armPivot, m_armExtend));
         m_operatorController.povLeft().whileTrue(CombinedCommandsUtil.goHome(m_armPivot, m_armExtend));

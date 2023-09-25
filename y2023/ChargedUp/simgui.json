@@ -289,6 +289,21 @@
       "/SmartDashboard/jflkdsjfl": "Command"
     },
     "windows": {
+      "/Shuffleboard/ArmPivotTestCommands/Arm Pivot: Angle PID - -30 degrees": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/Shuffleboard/ArmPivotTestCommands/Arm Pivot: Angle PID - 0 degrees": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/Shuffleboard/ArmPivotTestCommands/Arm Pivot: Pivot Up": {
+        "window": {
+          "visible": true
+        }
+      },
       "/Shuffleboard/Debug/Field": {
         "TurretRotationPoint": {
           "arrows": false,
@@ -311,6 +326,11 @@
         }
       },
       "/Shuffleboard/SwerveDriveTestCommands/Swerve reset position: (0, 0, 0)": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Auto Mode Select": {
         "window": {
           "visible": true
         }
@@ -477,6 +497,13 @@
     "persistent": {
       "Preferences": {
         "open": true
+      }
+    },
+    "retained": {
+      "SmartDashboard": {
+        "Auto Mode Select": {
+          "open": true
+        }
       }
     },
     "transitory": {
