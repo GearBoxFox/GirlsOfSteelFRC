@@ -140,7 +140,7 @@ public class ArmPivotSubsystem extends SubsystemBase {
         m_absoluteEncoder.setPositionConversionFactor(360.0);
         m_absoluteEncoder.setVelocityConversionFactor(360.0 / 60);
         m_absoluteEncoder.setInverted(true);
-        m_absoluteEncoder.setZeroOffset(21.5);
+        m_absoluteEncoder.setZeroOffset(321);
 
         m_sparkPidController = m_pivotMotor.getPIDController();
         if (Constants.IS_ROBOT_BLOSSOM) {

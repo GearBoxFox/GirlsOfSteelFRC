@@ -190,5 +190,37 @@
     "properties": {
       "persistent": true
     }
+  },
+  {
+    "name": "/Preferences/Chassis.mm.kp",
+    "type": "double",
+    "value": 0.0,
+    "properties": {
+      "persistent": true
+    }
+  },
+  {
+    "name": "/Preferences/Chassis.mm.ki",
+    "type": "double",
+    "value": 0.0,
+    "properties": {
+      "persistent": true
+    }
+  },
+  {
+    "name": "/Preferences/Chassis.mm.kd",
+    "type": "double",
+    "value": 0.0,
+    "properties": {
+      "persistent": true
+    }
+  },
+  {
+    "name": "/Preferences/Chassis.mm.kff",
+    "type": "double",
+    "value": 0.22,
+    "properties": {
+      "persistent": true
+    }
   }
 ]

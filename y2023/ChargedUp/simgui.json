@@ -480,6 +480,9 @@
       }
     },
     "transitory": {
+      "Arm Subsystem": {
+        "open": true
+      },
       "ChassisSubsystem": {
         "open": true
       },
@@ -498,7 +501,7 @@
     "Plot <0>": {
       "plots": [
         {
-          "height": 605,
+          "height": 179,
           "series": [
             {
               "color": [
