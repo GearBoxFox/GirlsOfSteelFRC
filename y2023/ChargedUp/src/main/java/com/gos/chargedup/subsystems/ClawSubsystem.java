@@ -113,7 +113,7 @@ public class ClawSubsystem extends SubsystemBase {
     }
 
     public CommandBase createTeleopMoveClawIntakeInCommand(CommandXboxController joystick) {
-        return this.createMoveClawIntakeInCommand().alongWith(new CheckRumbleCommand(joystick, this::hasGamePiece));
+        return this.createMoveClawIntakeInCommand();     //.alongWith(new CheckRumbleCommand(joystick, this::hasGamePiece));
     }
 
     public CommandBase createHoldPiece() {
