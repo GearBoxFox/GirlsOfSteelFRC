@@ -24,7 +24,7 @@ public class CheckRumbleCommand extends CommandBase {
     @Override
     public void execute() {
         if (m_checkValue.getAsBoolean()) {
-            m_joystick.getHID().setRumble(GenericHID.RumbleType.kBothRumble, 0.5);
+            m_joystick.getHID().setRumble(GenericHID.RumbleType.kBothRumble, 0.2);
         }
         else {
             m_joystick.getHID().setRumble(GenericHID.RumbleType.kBothRumble, 0);
@@ -39,6 +39,6 @@ public class CheckRumbleCommand extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
-
+        m_joystick.getHID().setRumble(GenericHID.RumbleType.kBothRumble, 0);
     }
 }
