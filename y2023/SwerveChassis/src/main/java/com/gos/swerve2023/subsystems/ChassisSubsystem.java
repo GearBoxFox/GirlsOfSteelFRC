@@ -22,8 +22,8 @@ import org.snobotv2.module_wrappers.ctre.CtrePigeonImuWrapper;
 
 public class ChassisSubsystem extends SubsystemBase {
 
-    private static final double WHEEL_BASE = 0.381;
-    private static final double TRACK_WIDTH = 0.381;
+    private static final double WHEEL_BASE = Units.inchesToMeters(28.25);
+    private static final double TRACK_WIDTH = Units.inchesToMeters(28.25);
 
     public static final double MAX_TRANSLATION_SPEED = Units.feetToMeters(13);
     public static final double MAX_ROTATION_SPEED = Units.degreesToRadians(360);

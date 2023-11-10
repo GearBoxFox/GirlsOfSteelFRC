@@ -7,9 +7,12 @@ package com.gos.swerve2023;
 
 import com.gos.swerve2023.commands.ChassisTeleopDriveCommand;
 import com.gos.swerve2023.subsystems.ChassisSubsystem;
+import com.pathplanner.lib.auto.AutoBuilder;
 import edu.wpi.first.hal.AllianceStationID;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.simulation.DriverStationSim;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -23,6 +26,8 @@ public class RobotContainer {
     private final ChassisSubsystem m_chassis;
     private final CommandXboxController m_driverJoystick;
 
+    private final SendableChooser<Command> m_autoChooser;
+
     public RobotContainer() {
         m_chassis = new ChassisSubsystem();
 
@@ -32,6 +37,8 @@ public class RobotContainer {
         configureBindings();
 
         PathPlannerUtils.createTrajectoriesShuffleboardTab(m_chassis);
+        m_autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("PP Autos", m_autoChooser);
 
         if (RobotBase.isSimulation()) {
             DriverStationSim.setEnabled(true);
@@ -55,6 +62,6 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
         // TODO: Implement properly
-        return null;
+        return m_autoChooser.getSelected();
     }
 }
