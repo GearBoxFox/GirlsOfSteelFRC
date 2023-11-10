@@ -31,6 +31,8 @@ public class RobotContainer {
         // Configure the trigger bindings
         configureBindings();
 
+        PathPlannerUtils.createTrajectoriesShuffleboardTab(m_chassis);
+
         if (RobotBase.isSimulation()) {
             DriverStationSim.setEnabled(true);
             DriverStationSim.setAllianceStationId(AllianceStationID.Blue1);
