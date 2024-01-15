@@ -41,6 +41,5 @@ public final class Constants {
 
     //Digital Inputs
     public static final int INTAKE_SENSOR = 19;
-    public static final int INTAKE_MOTOR = 0;
 
 }
