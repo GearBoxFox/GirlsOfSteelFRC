@@ -6,9 +6,17 @@
 package com.gos.crescendo2024;
 
 import com.gos.crescendo2024.auton.Autos;
+import com.gos.crescendo2024.commands.ArmPivotJoystickCommand;
+import com.gos.crescendo2024.commands.TeleopSwerveDrive;
+import com.gos.crescendo2024.subsystems.ArmPivotSubsystem;
 import com.gos.crescendo2024.subsystems.ChassisSubsystem;
+import com.gos.crescendo2024.subsystems.IntakeSubsystem;
+import com.gos.crescendo2024.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.simulation.DriverStationSim;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -23,10 +31,16 @@ public class RobotContainer {
     // Subsystems
     private final ChassisSubsystem m_chassisSubsystem;
 
+    private final ArmPivotSubsystem m_armPivotSubsystem;
+    private final ShooterSubsystem m_shooterSubsystem;
     private final Autos m_autonomousFactory;
+    private final IntakeSubsystem m_intakeSubsystem;
 
     private final CommandXboxController m_driverController =
         new CommandXboxController(Constants.DRIVER_JOYSTICK);
+
+    private final CommandXboxController m_operatorController =
+        new CommandXboxController(Constants.OPERATOR_JOYSTICK);
 
 
     /**
@@ -35,10 +49,35 @@ public class RobotContainer {
     public RobotContainer() {
         m_chassisSubsystem = new ChassisSubsystem();
 
+        m_shooterSubsystem = new ShooterSubsystem();
+
         m_autonomousFactory = new Autos();
+
+        m_armPivotSubsystem = new ArmPivotSubsystem();
+
+        m_intakeSubsystem = new IntakeSubsystem();
 
         // Configure the trigger bindings
         configureBindings();
+
+        createTestCommands();
+
+        if (RobotBase.isSimulation()) {
+            DriverStationSim.setEnabled(true);
+        }
+    }
+
+    private void createTestCommands() {
+        ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("test commands");
+        shuffleboardTab.add("shooterTuning", m_shooterSubsystem.createTunePercentShootCommand());
+        shuffleboardTab.add("intake in", m_intakeSubsystem.createMoveIntakeInCommand());
+        shuffleboardTab.add("intake out", m_intakeSubsystem.createMoveIntakeOutCommand());
+        shuffleboardTab.add("Chassis to 45", m_chassisSubsystem.createTurnToAngleCommand(45));
+        shuffleboardTab.add("Chassis to 90", m_chassisSubsystem.createTurnToAngleCommand(90));
+        shuffleboardTab.add("Chassis to -180", m_chassisSubsystem.createTurnToAngleCommand(-180));
+        shuffleboardTab.add("Chassis to -45", m_chassisSubsystem.createTurnToAngleCommand(-45));
+
+
     }
 
 
@@ -52,7 +91,9 @@ public class RobotContainer {
      * joysticks}.
      */
     private void configureBindings() {
-        m_driverController.b().whileTrue(new InstantCommand(() -> System.out.println("ReplaceMe"), m_chassisSubsystem));
+        m_chassisSubsystem.setDefaultCommand(new TeleopSwerveDrive(m_chassisSubsystem, m_driverController));
+
+        m_armPivotSubsystem.setDefaultCommand(new ArmPivotJoystickCommand(m_armPivotSubsystem, m_operatorController));
     }
 
 
